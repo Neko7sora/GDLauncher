@@ -16,18 +16,18 @@ jobs:
 
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-latest, windows-2019, ubuntu-latest]
 
     steps:
       - name: Context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - name: Use Node.js 14.16.0
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '14.16.0'
 
@@ -75,25 +75,27 @@ jobs:
           GH_ACCESS_TOKEN_RELEASES: ${{ secrets.GH_ACCESS_TOKEN_RELEASES }}
         run: |
           npm run upload
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         if: matrix.os == 'macos-latest'
         with:
           name: MacOs Release
           path: deploy
 
-      - uses: actions/upload-artifact@v1
-        if: matrix.os == 'windows-latest'
+      - uses: actions/upload-artifact@v2
+        if: matrix.os == 'windows-2019'
         with:
           name: Windows Release
           path: deploy
 
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         if: matrix.os == 'ubuntu-latest'
         with:
           name: Linux Release
           path: deploy
 
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.1
       - name: Send Webhook Notification
         if: matrix.os == 'macos-latest'
         env:
