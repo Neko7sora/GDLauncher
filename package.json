@@ -149,7 +149,7 @@
     "@loadable/babel-plugin": "^5.13.2",
     "@sentry/integrations": "^6.17.6",
     "@sentry/react": "^6.16.1",
-    "@sentry/tracing": "^6.16.1",
+    "@sentry/tracing": "^6.19.7",
     "@sentry/utils": "^6.16.1",
     "antd": "4.18.6",
     "axios": "^0.21.3",
