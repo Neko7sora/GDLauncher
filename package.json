@@ -172,7 +172,7 @@
     "localforage": "^1.10.0",
     "lockfile": "^1.0.4",
     "lodash": "^4.17.21",
-    "make-dir": "^3.1.0",
+    "make-dir": "^4.0.0",
     "memoize-one": "^6.0.0",
     "node-7z": "^3.0.0",
     "node-machine-id": "^1.1.12",
